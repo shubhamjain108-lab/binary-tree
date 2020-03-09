@@ -34,8 +34,46 @@ module BinaryTree
             end
         end
 
+        # print data in inorder form (left, root, right)
+        def inorder(node)
+            if node == nil
+                return
+            end
+            inorder(node.left)
+            puts "#{node.data}"
+            inorder(node.right)
+        end
+        
+        # print data in preorder form (root, left, right)
+        def preorder(node)
+            if node == nil
+                return
+            end
+            puts "#{node.data}"            
+            preorder(node.left)
+            preorder(node.right)
+        end
+
+        # print data in postorder for (left, right, root)
+        def postorder(node)
+            if node == nil
+                return
+            end
+            postorder(node.left)
+            postorder(node.right)
+            puts "#{node.data}"            
+        end
+
         def test_binary_tree
-            BinaryTree::Node.new.insert(@@root, 10)
+            for i in 1..5 do
+                BinaryTree::Node.new.insert(@@root, rand(100))
+            end
+            puts "inorder : "
+            inorder(@@root)
+            puts "preorder : "
+            preorder(@@root)
+            puts "postorder : "
+            postorder(@@root)
         end
 
     end
